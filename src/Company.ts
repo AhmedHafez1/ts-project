@@ -1,6 +1,7 @@
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
+import { Markable } from "./CustomMap";
 
-export class Company {
+export class Company implements Markable {
   companyName: string;
   catchPhrase: string;
   location: {
