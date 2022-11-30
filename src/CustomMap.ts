@@ -3,6 +3,7 @@ export interface Markable {
     lat: number;
     lng: number;
   };
+  markerPopupContent(): string;
 }
 
 export class CustomMap {
@@ -18,9 +19,17 @@ export class CustomMap {
   }
 
   addMarker(markable: Markable) {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: { lat: markable.location.lat, lng: markable.location.lng },
+    });
+
+    marker.addListener('click', () => {
+      const popup = new google.maps.InfoWindow({
+        content: markable.markerPopupContent(),
+      });
+
+      popup.open(this.googleMap, marker);
     });
   }
 }

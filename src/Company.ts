@@ -1,5 +1,5 @@
-import { faker } from "@faker-js/faker";
-import { Markable } from "./CustomMap";
+import { faker } from '@faker-js/faker';
+import { Markable } from './CustomMap';
 
 export class Company implements Markable {
   companyName: string;
@@ -16,5 +16,9 @@ export class Company implements Markable {
       lat: +faker.address.latitude(),
       lng: +faker.address.longitude(),
     };
+  }
+
+  markerPopupContent(): string {
+    return `Company : ${this.companyName}`;
   }
 }

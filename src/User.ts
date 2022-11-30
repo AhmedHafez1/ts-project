@@ -1,5 +1,5 @@
-import { faker } from "@faker-js/faker";
-import { Markable } from "./CustomMap";
+import { faker } from '@faker-js/faker';
+import { Markable } from './CustomMap';
 
 export class User implements Markable {
   name: string;
@@ -14,5 +14,8 @@ export class User implements Markable {
       lat: parseFloat(faker.address.latitude()),
       lng: parseFloat(faker.address.longitude()),
     };
+  }
+  markerPopupContent(): string {
+    return `User : ${this.name}`;
   }
 }
